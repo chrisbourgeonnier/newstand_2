@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Newstand</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:300,700,100,400' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+
+    <div class="header">
+      <div class="container">
+        <%= link_to(root_path) do %>
+          <h1><span class="dark">n</span>ewstand</h1>
+        <% end %>
+
+        <div class="nav">
+
+          <% if current_user %>
+            <ul>
+              <li><%= current_user.email %></li>
+              <li><%= button_to "Log out", logout_path, method: "delete", class: 'btn btn-small' %></li>
+            </ul>
+          <% else %>
+            <ul>
+              <li><%= link_to "Login", 'login' %></li>
+              <li><%= link_to "Signup", 'signup' %></li>
+            </ul>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
+
+
+    <%= yield %>
+
+  </body>
+</html>
